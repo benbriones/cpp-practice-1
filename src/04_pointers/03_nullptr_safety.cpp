@@ -81,6 +81,26 @@ void print_value(int* p) {
     }
     std::cout << *p << '\n';
 }
+//  If p is null, do nothing and return false. Otherwise double the value it
+//  points at and return true. Call it with a real pointer and with nullptr
+//  and print both results:
+bool safe_double(int* p) {
+    if (!p) return false;
+
+    *p = *p * 2;
+    std::cout << "doubled int is now: " << *p << "\n";
+    return true;
+}
+
+int* find_first_even(int values[], int count) {
+    for (int i = 0; i < count; ++i) {
+        if (values[i] % 2 == 0) {
+            return &values[i];
+        }
+    }
+
+    return nullptr;
+}
 
 int main() {
     int x = 42;
@@ -125,6 +145,11 @@ int main() {
     //
     //      safe_double(&n)     -> true, n is now 20
     //      safe_double(nullptr)-> false
+    int val = 20;
+    int* pVal = &val;
+    int* c = nullptr;
+    std::cout << safe_double(pVal) << "\n";
+    std::cout << safe_double(c) << "\n";
 
     // TODO
 
@@ -139,8 +164,19 @@ int main() {
     //  when there is no even element at all.
     //
     //  Call it on both of these:
-    //      int a[5] = {7, 3, 8, 5, 4};      // has evens
-    //      int b[3] = {1, 3, 5};            // has none
+    int a[5] = {7, 3, 8, 5, 4};  // has evens
+    int b[3] = {1, 3, 5};        // has none
+
+    int* pA = find_first_even(a, 5);
+    if (pA) {
+        std::cout << "first even in a: " << *pA;
+        *pA = 0;
+        std::cout << "    -> a is now ";
+        for (int i = 0; i < 5; ++i) {
+            std::cout << " " << a[i];
+        }
+    }
+
     //
     //  For each: check the returned pointer before using it. When it is not
     //  null, print the value AND set it to 0 through the pointer to prove you
