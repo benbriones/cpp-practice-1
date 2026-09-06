@@ -82,21 +82,22 @@ int main() {
     //  Here is a sequence. Write down what you think prints at each step BEFORE
     //  you write any code, then implement it and check.
     //
-    //      int a = 5;
-    //      int b = 20;
-    //      int* q = &a;
-    //      *q = *q + 1;        // (1) what are a and b now?
-    //      q = &b;             // (2) what are a and b now?
-    //      *q = 0;             // (3) what are a and b now?
+    int a = 5;
+    int b = 20;
+    int* q = &a;
+    *q = *q + 1;  // (1) what are a and b now?
+    std::cout << " a = " << a << ",  b = " << b << '\n';
+    q = &b;  // (2) what are a and b now?
+    std::cout << " a = " << a << ",  b = " << b << '\n';
+    *q = 0;  // (3) what are a and b now?
+    std::cout << " a = " << a << ",  b = " << b << '\n';
     //
     //  Print "a = ?, b = ?" after each of the three lines.
     //
     //  YOUR PREDICTIONS:
-    //      (1) a = ?  b = ?
-    //      (2) a = ?  b = ?
-    //      (3) a = ?  b = ?
-
-    // TODO
+    //      (1) a = 6  b = 20
+    //      (2) a = 6  b = 20
+    //      (3) a = 6  b = 0
 
     // -------------------------------------------------------------------------
     //  YOUR TASK 2: double it through a pointer
@@ -106,6 +107,10 @@ int main() {
     //  value 42. Then print score to prove it worked.
 
     // TODO
+    int score = 20;
+    int* pScore = &score;
+    *pScore = *pScore + 22;
+    std::cout << score << "\n";
 
     // -------------------------------------------------------------------------
     //  YOUR TASK 3: a pointer walking an array
@@ -124,6 +129,19 @@ int main() {
     //   Take the address of each element explicitly with &values[i].)
 
     // TODO
+    int values[4] = {2, 4, 6, 8};
+    for (std::size_t i = 0; i < std::size(values); ++i) {
+        int* pValue = &values[i];
+        std::cout << "values[" << i << "] lives at " << pValue << " and holds " << *pValue << "\n";
+        *pValue = *pValue + 10;
+    }
+
+    // Print the array values
+    std::cout << "after +10: ";
+
+    for (std::size_t i = 0; i < std::size(values); ++i) {
+        std::cout << values[i] << " ";
+    }
 
     return 0;
 }
