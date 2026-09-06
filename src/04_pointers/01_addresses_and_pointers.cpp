@@ -86,6 +86,11 @@ int main() {
     //  d) Print whether ptr == &price (it should print 1).
 
     // TODO
+    double price = 19.99;
+    double* pPrice = &price;
+    std::cout << "price = " << price << "\n";
+    std::cout << "&price = " << &price << "\n";
+    std::cout << "ptr = " << pPrice << "\n";
 
     // -------------------------------------------------------------------------
     //  YOUR TASK 2: two variables, one pointer
@@ -98,9 +103,15 @@ int main() {
     //  did the value of `a` change when you re-pointed q? Write your answer here
     //  as a comment, then run it and check.
     //
-    //  YOUR PREDICTION:
+    //  YOUR PREDICTION: value of q will be different adresses.
 
     // TODO
+    int a = 1, b = 2;
+    int* q = &a;
+    std::cout << q << "\n";
+
+    q = &b;
+    std::cout << q << "\n";
 
     // -------------------------------------------------------------------------
     //  YOUR TASK 3: how big is a pointer?
