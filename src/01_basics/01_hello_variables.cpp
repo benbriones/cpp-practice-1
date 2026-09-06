@@ -74,8 +74,16 @@ int main() {
     //     Do the arithmetic in the program (age + 10), do not type 31 yourself.
 
     // TODO: declare your variables here
+    std::string name = "ben";
+    int age = 27;
+    double height_m = 1.27;
+    int tenYearsAge = age + 10;
 
     // TODO: print them here
+    std::cout << "name: " << name << '\n';
+    std::cout << "age: " << age << '\n';
+    std::cout << "height_m: " << height_m << '\n';
+    std::cout << "in 10 years: " << tenYearsAge << '\n';
 
     return 0;
 }
