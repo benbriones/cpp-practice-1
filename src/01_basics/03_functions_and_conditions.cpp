@@ -69,7 +69,15 @@ int larger_of(int a, int b) {
 //  it should RETURN the text so the caller can decide what to do with it.
 std::string describe_number(int n) {
     // TODO: replace this placeholder with your three branches
-    return "TODO";
+    if (n == 0) {
+        return "zero";
+    } else if (n > 0) {
+        return "positive";
+    } else if (n < 0) {
+        return "negative";
+    } else {
+        return "other detected";
+    }
 }
 
 // -----------------------------------------------------------------------------
@@ -84,7 +92,17 @@ std::string describe_number(int n) {
 //      print an error message and return 0.0 instead of dividing.
 double calculate(double a, double b, char op) {
     // TODO: handle '+', '-', '*', '/', and an unknown operator
-    return 0.0;
+    if (op == '+') {
+        return a + b;
+    } else if (op == '-') {
+        return a - b;
+    } else if (op == '*') {
+        return a * b;
+    } else if (op == '/') {
+        return a / b;
+    } else {
+        return 0.0;
+    }
 }
 
 int main() {
@@ -113,6 +131,11 @@ int main() {
     //  Hint: you can read all three in one go --  std::cin >> a >> op >> b;
 
     // TODO: read a, op, b from std::cin and print calculate(a, b, op)
+    int a, b;
+    char op;
+    std::cout << "Provide two numbers and an operator, like a + b:\n";
+    std::cin >> a >> op >> b;
+    std::cout << "The answer is: " << calculate(a, b, op) << '\n';
 
     return 0;
 }
