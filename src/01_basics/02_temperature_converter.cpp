@@ -60,10 +60,17 @@ int main() {
     //  it looks like:  if (celsius <= 0.0) { ... } )
 
     // TODO: declare celsius, prompt, and read it with std::cin
+    double celsius = 29.3;
+    std::cout << "Enter a temperature in Celsius: " << celsius << "\n";
 
     // TODO: compute fahrenheit and print the result
+    double fahrenheit = celsius * 9.0 / 5.0;
+    std::cout << celsius << "C = " << fahrenheit << "F\n";
 
     // TODO: do the same in reverse (Fahrenheit -> Celsius)
+    std::cout << "Enter a temperature in Farenheit: " << fahrenheit << "\n";
+    double celsius2 = (fahrenheit - 32) * 5.0 / 9.0;
+    std::cout << fahrenheit << "F = " << celsius2 << "C";
 
     return 0;
 }
