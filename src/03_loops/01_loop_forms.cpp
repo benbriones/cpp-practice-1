@@ -88,8 +88,21 @@ int main() {
     //  see they are the same machinery.
 
     // TODO: for-loop version
+    for (int i = 1; i <= 50; ++i) {
+        if (i % 5 == 0) {
+            std::cout << i << " ";
+        }
+    }
 
+    std::cout << "\n";
     // TODO: while-loop version
+    int i = 1;
+    while (i < 51) {
+        if (i % 5 == 0) {
+            std::cout << i << " ";
+        }
+        ++i;
+    }
 
     // -------------------------------------------------------------------------
     //  YOUR TASK 2: the 1 to 100 report
