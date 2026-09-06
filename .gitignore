@@ -1,0 +1,13 @@
+build/
+bin/
+compile_commands.json
+.DS_Store
+
+# clangd index
+.cache/
+
+# compiled scratch binaries (keep the sources)
+scratch/*
+!scratch/*.cpp
+!scratch/*.h
+!scratch/*.hpp

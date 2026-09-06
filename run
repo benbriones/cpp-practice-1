@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Quick single-file compile-and-run, for practice snippets.
+#   ./run scratch/foo.cpp        -> compile + run
+#   ./run scratch/foo.cpp arg1   -> extra args are passed to your program
+set -euo pipefail
+
+if [[ $# -lt 1 ]]; then
+    echo "usage: ./run <file.cpp> [program args...]" >&2
+    exit 1
+fi
+
+src="$1"; shift
+out="/tmp/cpp-practice-$(basename "${src%.*}")"
+
+clang++ -std=c++23 -g -O0 \
+    -Wall -Wextra -Wpedantic -Wshadow -Wconversion \
+    -fsanitize=address,undefined -fno-omit-frame-pointer \
+    -o "$out" "$src"
+
+exec "$out" "$@"
