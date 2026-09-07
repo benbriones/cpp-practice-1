@@ -59,11 +59,19 @@ void print_array(const int values[], int count) {
     std::cout << "]\n";
 }
 
+int index_of(const int values[], int count, int target) {
+    for (int i = 0; i < count; i++) {
+        if (values[i] == target) return i;
+    }
+
+    return -1;
+}
+
 int main() {
     constexpr int kSize = 7;
     int numbers[kSize] = {4, 8, 15, 16, 23, 42, 8};
 
-    std::cout << "numbers      : ";
+    std::cout << "numbers: ";
     print_array(numbers, kSize);
 
     // -------------------------------------------------------------------------
@@ -75,6 +83,12 @@ int main() {
     //     (one loop gives you both -- do not walk the array twice)
 
     // TODO
+    std::cout << "running: ";
+    int runningTotal = 0;
+    for (int i = 0; i < kSize; ++i) {
+        runningTotal = runningTotal + numbers[i];
+        std::cout << runningTotal << " ";
+    }
 
     // -------------------------------------------------------------------------
     //  YOUR TASK 2: linear search
@@ -88,13 +102,15 @@ int main() {
     //  convention -- get comfortable with it.
     //
     //  Call it and print:
-    //      index_of(15) : 2
-    //      index_of(99) : -1
+
     //
     //  Then use it to answer: does 8 appear more than once? (Hint: you only need
     //  a count here, not an index -- write a second small loop.)
 
     // TODO
+    std::cout << "\n";
+    std::cout << index_of(numbers, kSize, 15) << "\n";
+    std::cout << index_of(numbers, kSize, 99) << "\n";
 
     // -------------------------------------------------------------------------
     //  YOUR TASK 3: reverse in place
@@ -111,6 +127,23 @@ int main() {
     //  happen if you kept going to the end.
 
     // TODO
+    int left = 0;
+    int right = kSize - 1;
+    while (left < right) {
+        int currLeft = numbers[left];
+        int currRight = numbers[right];
+
+        // Switch
+        numbers[left] = currRight;
+        numbers[right] = currLeft;
+
+        // Walk the pointers
+        left++;
+        right--;
+    }
+
+    std::cout << "reversed: ";
+    print_array(numbers, kSize);
 
     return 0;
 }
