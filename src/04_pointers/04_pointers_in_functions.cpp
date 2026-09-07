@@ -74,6 +74,56 @@ void really_double(int* n) {
     *n = *n * 2;
 }
 
+void swap_ints(int* a, int* b) {
+    int currA = *a;
+    int currB = *b;
+
+    *a = currB;
+    *b = currA;
+}
+
+void min_and_max(const int values[], int count, int* out_min, int* out_max) {
+    int currMax = values[0];
+    int currMin = values[0];
+
+    for (int i = 1; i < count; i++) {
+        if (values[i] > currMax) {
+            currMax = values[i];
+        } else if (values[i] < currMin) {
+            currMin = values[i];
+        }
+    }
+
+    *out_max = currMax;
+    *out_min = currMin;
+}
+
+//  Integer division by zero crashes. Write a function that refuses to:
+//
+//      bool safe_divide(int a, int b, int* out_result)
+//
+//    - if b is 0, return false and leave *out_result alone
+//    - if out_result is null, return false (nothing to write to)
+//    - otherwise write a / b into *out_result and return true
+//
+//  Call it twice and print:
+//      10 / 2 = 5
+//      10 / 0 -> failed
+//
+//  This pattern -- "return whether it worked, deliver the answer through a
+//  pointer" -- shows up constantly in real C and C++ code.
+
+bool safe_divide(int a, int b, int* out_result) {
+    if (b == 0) {
+        return false;
+    } else if (!out_result) {
+        return false;
+    } else {
+        *out_result = a / b;
+        return true;
+    }
+}
+
 int main() {
     int score = 10;
 
@@ -102,6 +152,9 @@ int main() {
     //      int* tmp = a; a = b; b = tmp;
 
     // TODO
+    int x = 1, y = 2;
+    swap_ints(&x, &y);
+    std::cout << "x is now: " << x << " y is now: " << y << "\n";
 
     // -------------------------------------------------------------------------
     //  YOUR TASK 2: returning two things at once
@@ -120,7 +173,11 @@ int main() {
     //  Print:     min = 4, max = 33
 
     // TODO
-
+    int data[6] = {19, 4, 27, 8, 33, 12};
+    int minValue;
+    int maxValue;
+    min_and_max(data, 6, &minValue, &maxValue);
+    std::cout << "min = " << minValue << " max = " << maxValue << "\n";
     // -------------------------------------------------------------------------
     //  YOUR TASK 3: reporting success through a pointer
     // -------------------------------------------------------------------------
@@ -140,6 +197,11 @@ int main() {
     //  pointer" -- shows up constantly in real C and C++ code.
 
     // TODO
+    int divideResult;
+    safe_divide(10, 2, &divideResult);
+    std::cout << divideResult << "\n";
+    safe_divide(10, 0, &divideResult);
+    std::cout << divideResult << "\n";
 
     return 0;
 }
